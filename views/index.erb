@@ -1,0 +1,9 @@
+<div class="index">
+  <h1><a href="/" class="top">メモ</a></h1>
+  <a href ="/new" class="action new">new</a>
+</div>
+<ul>
+  <% @title.zip(@id).each do |title, id| %>
+    <li><a href= <%= "/show/#{id}" %> ><%= title %></a></li>
+  <% end %>
+</ul>
