@@ -3,7 +3,7 @@
   <a href ="/new" class="action new">new</a>
 </div>
 <ul>
-  <% @title.zip(@id).each do |title, id| %>
+  <% @titles.zip(@ids).each do |title, id| %>
     <li><a href= <%= "/#{id}" %> ><%= title %></a></li>
   <% end %>
 </ul>
