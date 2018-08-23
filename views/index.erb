@@ -4,6 +4,6 @@
 </div>
 <ul>
   <% @title.zip(@id).each do |title, id| %>
-    <li><a href= <%= "/show/#{id}" %> ><%= title %></a></li>
+    <li><a href= <%= "/#{id}" %> ><%= title %></a></li>
   <% end %>
 </ul>

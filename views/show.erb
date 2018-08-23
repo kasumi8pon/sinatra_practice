@@ -6,7 +6,7 @@
       <div class="buttons">
       <input type= "submit" value="edit" class="action button">
     </form>
-    <form method="post" action="/delete?_method=delete">
+    <form method="post" action="/<%= @id %>?_method=delete">
       <input type="hidden" value="<%= @id %>" name="id">
       <input type= "submit" value="delete" class="action button">
       </div>

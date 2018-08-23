@@ -18,7 +18,7 @@ patch "/edit" do
   redirect '/'
 end
 
-delete "/delete" do
+delete "/:id" do
   @id = params[:id]
   File.delete("memo/#{@id}.txt")
   redirect '/'
@@ -40,7 +40,7 @@ get "/new" do
   erb :new
 end
 
-get "/show/:id" do
+get "/:id" do
   @id = params[:id]
   @memo = File.open("memo/#{@id}.txt").read
   erb :show
