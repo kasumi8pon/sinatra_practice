@@ -1,6 +1,6 @@
 <h1><a href="/" class="top">メモ</a></h1>
 
-  <form method="post" action="/edit">
+  <form method="post" action="/<%= @id %>">
     <textarea name="body"><%= @memo %></textarea>
     <input type="hidden" value="<%= @id %>" name="id">
     <input type="hidden" name="_method" value="patch">

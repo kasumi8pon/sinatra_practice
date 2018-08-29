@@ -1,26 +1,9 @@
 require 'sinatra'
 
-patch '/edit' do
-  @body = params[:body]
-  @id = params[:id]
-  File.write("memo/#{@id}.txt", @body)
-  redirect '/'
-end
-
-delete '/:id' do
-  @id = params[:id]
-  File.delete("memo/#{@id}.txt")
-  redirect '/'
-end
-
 get '/' do
   filenames = Dir.glob('memo/*').sort.reverse
   @ids = filenames.map { |f| File.basename(f, '.txt') }
-  @titles =
-    filenames.map do |f|
-      title = File.open(f).gets
-      title || '(no title)'
-    end
+  @titles = filenames.map { |f| File.open(f).gets || '(no title)' }
   erb :index
 end
 
@@ -34,7 +17,7 @@ get '/:id' do
   erb :show
 end
 
-post '/create' do
+post '/new' do
   @body = params[:body]
   ids = Dir.glob('memo/*').map { |f| File.basename(f, '.txt') }
   datetime = Time.now.strftime('%Y%m%d%H%M%S')
@@ -45,5 +28,18 @@ post '/create' do
     @id = datetime + digit.to_s
   end
   File.write("memo/#{@id}.txt", @body)
+  redirect '/'
+end
+
+patch '/:id' do
+  @body = params[:body]
+  @id = params[:id]
+  File.write("memo/#{@id}.txt", @body)
+  redirect '/'
+end
+
+delete '/:id' do
+  @id = params[:id]
+  File.delete("memo/#{@id}.txt")
   redirect '/'
 end
