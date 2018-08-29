@@ -1,14 +1,16 @@
 <h1><a href="/" class="top">メモ</a></h1>
 
-  <form method="post" action="/edit?_method=patch">
+  <form method="post" action="/edit">
     <textarea name="body"><%= @memo %></textarea>
+    <input type="hidden" value="<%= @id %>" name="id">
+    <input type="hidden" name="_method" value="patch">
+    <div class="buttons">
+      <input type="submit" class="action button" value="edit">
+  </form>
+  <form method="post" action="/<%= @id %>">
       <input type="hidden" value="<%= @id %>" name="id">
-      <div class="buttons">
-      <input type= "submit" value="edit" class="action button">
-    </form>
-    <form method="post" action="/<%= @id %>?_method=delete">
-      <input type="hidden" value="<%= @id %>" name="id">
-      <input type= "submit" value="delete" class="action button">
-      </div>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" class="action button" value="delete">
+    </div>
   </form>
 </div>
