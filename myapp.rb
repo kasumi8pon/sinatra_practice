@@ -17,7 +17,7 @@ get '/:id' do
   erb :show
 end
 
-post '/new' do
+post '/' do
   @body = params[:body]
   ids = Dir.glob('memo/*').map { |f| File.basename(f, '.txt') }
   datetime = Time.now.strftime('%Y%m%d%H%M%S')
